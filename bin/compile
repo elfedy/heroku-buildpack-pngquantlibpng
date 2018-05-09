@@ -21,7 +21,8 @@ echo "Downloading libpng-1.6.34 binary" | arrow
 LIBPNG_URL="https://s3-eu-west-1.amazonaws.com/elfedy-heroku-buildpack-pngquant/libpng-1.6.34.tgz"
 curl $LIBPNG_URL -s -o - | tar xzf - -C $VENDOR_DIR
 
-PNGQUANT_DOWNLOAD_URL="https://github.com/pornel/pngquant/archive/2.11.7.tar.gz"
+echo "Checking libpng was downloaded"
+
 PNGQUANT_CACHE_DIR="$CACHE_DIR/pngquant-cache"
 
 if [ -x "$PNGQUANT_CACHE_DIR/pngquant" ]; then
@@ -37,7 +38,7 @@ echo "Building pngquant from source" | arrow
   git clone --recursive https://github.com/kornelski/pngquant.git
   cd pngquant
   
-  ./configure  --with-libpng=$BUILD_DIR/$VENDOR_DIR/libpng-1.6.34 | indent
+  ./configure  --with-libpng=$VENDOR_DIR/libpng-1.6.34 | indent
   make | indent
   chmod +x pngquant
 
