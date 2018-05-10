@@ -23,7 +23,7 @@ curl $LIBPNG_URL -s -o - | tar xzf - -C $VENDOR_DIR
 
 echo "Checking libpng was downloaded"
 
-PNGQUANT_CACHE_DIR="$CACHE_DIR/pngquant-cache"
+PNGQUANT_CACHE_DIR="$CACHE_DIR/pngquantlibpng-cache"
 
 if [ -x "$PNGQUANT_CACHE_DIR/pngquant" ]; then
   echo "Using cached pngquant binary" | arrow
